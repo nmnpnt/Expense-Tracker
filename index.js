@@ -1,54 +1,58 @@
 
-// var table = document.getElementById('expnTable');
-// var form = document.getElementById('expform');
+   
+    let form = document.getElementById('expform');
+    const btn = document.getElementById('btn');
+    
+   
+                 
+    btn.addEventListener('click', addExpense); 
 
-// expform.addEventListener('submit', addExpense);
+    const tabledata = [];
 
-// function addExpense(){
+    
+    function addExpense(){
+        // e.preventDefult();
 
-//     var type = document.getElementById('type').value;
-//     var name = document.getElementById('name').value;
-//     var date = document.getElementById('date').value;
-//     var amount = document.getElementById('amount').value;
+        let type = document.getElementById('type').value;
+        let name = document.getElementById('name').value;
+        let date = document.getElementById('date').value;
+        let amount = document.getElementById('amount').value;
 
-//     if( type == 'chooseOne' || name.length <=0 || date == 0 || amount <= 0);{
-//         alert('fields Incomplete');
-//         return;
-//         }
+        if( type != 'chooseOne' || name.length >0 || date != 0 || amount > 0){
+            let obj = { type,
+                name,
+                date,
+                amount
+                } 
 
-//         else{
+            tabledata.push(obj);
+          
+        }  
+        showFunction()
         
-//         }
-//     }
+    }
 
-    // function onFormSubmit(){
-    //     var formdata = read();
-    //     insertNewRecord(formdata);
-    // }
+    function showFunction(){
+        let expnTable = document.getElementById('expnTable');
+        // expnTable.innerHTML = '';
 
-    // function read(){
-    //     var formdata = {};
-    //     formdata["type"] = document.getElementById("type").value;
-    //     formdata["name"] = document.getElementById("name").value;
-    //     formdata["date"] = document.getElementById("date").value;
-    //     formdata["amount"] = document.getElementById("amount").value;
+        for(i=0; i<tabledata.length; i++){
+            expnTable.innerHTML +=  `
+            <tr>
 
-    //     return formdata;
-    // }
+            <td>${tabledata[i].type}</td>
+            <td>${tabledata[i].name}</td>
+            <td>${tabledata[i].date}</td>
+            <td>$${tabledata[i].amount}</td> 
+
+            </tr>`;
+        }
+     }
+         
+         
+
+  
+        
 
 
-    // function tablev(data){
-    //     var table = document.getElementById("lipa").document.getElementById("expnTable")[0];
-    //     var newRow = table.insertRow(table.length);
-    //     cell1 = newRow.insertCell(0);
-    //     cell1.innerHTML = data.type;
-
-    //     cell2 = newRow.insertCell(1);
-    //     cell2.innerHTML = data.name;
-
-    //     cell3 = newRow.insertCell(2);
-    //     cell3.innerHTML = data.date;
-
-    //     cell4 = newRow.insertCell(3);
-    //     cell4.innerHTML = data.amount;
-    // }
+   
