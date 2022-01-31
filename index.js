@@ -10,8 +10,8 @@
     const tabledata = [];
 
     
-    function addExpense(){
-        // e.preventDefult();
+    function addExpense(e){
+        e.preventDefault();
 
         let type = document.getElementById('type').value;
         let name = document.getElementById('name').value;
@@ -29,12 +29,13 @@
           
         }  
         showFunction()
+        form.reset();
         
     }
 
     function showFunction(){
         let expnTable = document.getElementById('expnTable');
-        // expnTable.innerHTML = '';
+        expnTable.innerHTML = '';
 
         for(i=0; i<tabledata.length; i++){
             expnTable.innerHTML +=  `
